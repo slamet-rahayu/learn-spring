@@ -46,4 +46,7 @@ public class ProductsController {
     public List<ProductsEntity> findByName(@PathVariable String name) {
         return productsService.findByName(name);
     }
+
+    @GetMapping("/test")
+    public String testProduct() { return "success"; }
 }
