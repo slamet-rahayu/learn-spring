@@ -1,8 +1,6 @@
 package com.example.springboot.config.security;
 
-import com.example.springboot.modules.user.UserDto;
-import com.example.springboot.modules.user.UserEntity;
-import com.example.springboot.modules.user.UserService;
+import com.example.springboot.modules.user.UserDetailService;
 import com.example.springboot.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -17,7 +15,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
@@ -26,7 +23,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UserService userService;
+    private UserDetailService userService;
 
     @Override
     protected void doFilterInternal( HttpServletRequest request, HttpServletResponse response,
@@ -38,7 +35,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
-            System.out.println("jwt: "+jwt);
             username = jwtUtil.extractUserName(jwt);
         }
 
@@ -51,6 +47,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
         }
+
         chain.doFilter(request, response);
     }
 

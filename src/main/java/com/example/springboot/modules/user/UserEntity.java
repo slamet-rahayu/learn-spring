@@ -25,12 +25,12 @@ public class UserEntity {
     private String role;
 
     // Constructors
-    public UserEntity(String username, String password, String name, String role) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.role = role;
-    }
+//    public UserEntity(String username, String password, String name, String role) {
+//        this.username = username;
+//        this.password = password;
+//        this.name = name;
+//        this.role = role;
+//    }
 
     // Getters and Setters
     public Long getId() {

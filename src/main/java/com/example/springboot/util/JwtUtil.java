@@ -36,7 +36,7 @@ public class JwtUtil {
 
     public boolean isTokenvalid(String token) {
         try {
-            Jwts.parser().setSigningKey("jwtSecret").parseClaimsJws(token);
+            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
             return true;
         } catch (SignatureException | MalformedJwtException | ExpiredJwtException | UnsupportedJwtException | IllegalArgumentException e) {
             return false;
