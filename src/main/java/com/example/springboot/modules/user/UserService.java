@@ -1,11 +1,12 @@
 package com.example.springboot.modules.user;
 
+import com.example.springboot.validation.UniqueConstraintValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UserService implements UniqueConstraintValidator {
 
     @Autowired
     private UserRepository userRepository;
@@ -13,9 +14,14 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public UserEntity register(UserEntity user) {
+    @Override
+    public boolean isUnique(String value) {
+        return userRepository.existsByUsername(value);
+    }
+
+    public void register(UserEntity user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
+        userRepository.save(user);
     }
 
 }

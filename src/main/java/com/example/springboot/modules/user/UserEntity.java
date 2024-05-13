@@ -1,7 +1,10 @@
 package com.example.springboot.modules.user;
 
 
+import com.example.springboot.annotations.Unique;
+import com.example.springboot.validation.UniqueConstraintValidator;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity(name = "users")
 @Table(name = "users")
@@ -12,15 +15,20 @@ public class UserEntity {
     @Column(name = "id")
     private Long id;
 
+    @NotBlank
+//    @Unique(service = UniqueConstraintValidator.class)
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
+    @NotBlank
     @Column(name = "password", nullable = false)
     private String password;
 
+    @NotBlank
     @Column(name = "name", nullable = false)
     private String name;
 
+    @NotBlank
     @Column(name = "role", nullable = false)
     private String role;
 

@@ -1,8 +1,7 @@
 package com.example.springboot.modules.user;
 
-import jakarta.persistence.Column;
-
 public class UserDto {
+
     private Long id;
     private String username;
     private String password;
