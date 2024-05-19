@@ -1,6 +1,6 @@
 package com.example.springboot.modules.auth;
 
-import com.example.springboot.modules.user.UserDetailService;
+import com.example.springboot.modules.user.UserDetailServiceCore;
 import com.example.springboot.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +19,7 @@ public class AuthService {
     JwtUtil jwtUtil;
 
     @Autowired
-    UserDetailService userService;
+    UserDetailServiceCore userService;
 
     public String generateToken(String username) {
         return jwtUtil.generateToken(username);

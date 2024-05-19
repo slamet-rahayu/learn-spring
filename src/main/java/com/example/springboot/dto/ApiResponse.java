@@ -2,7 +2,7 @@ package com.example.springboot.dto;
 
 public class ApiResponse {
 
-    private String message;
+    private String message = "success";
     private Object data;
 
     // Getters and setters

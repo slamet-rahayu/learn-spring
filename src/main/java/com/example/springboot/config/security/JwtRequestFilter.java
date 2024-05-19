@@ -1,6 +1,6 @@
 package com.example.springboot.config.security;
 
-import com.example.springboot.modules.user.UserDetailService;
+import com.example.springboot.modules.user.UserDetailServiceCore;
 import com.example.springboot.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -23,7 +23,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UserDetailService userService;
+    private UserDetailServiceCore userService;
 
     @Override
     protected void doFilterInternal( HttpServletRequest request, HttpServletResponse response,

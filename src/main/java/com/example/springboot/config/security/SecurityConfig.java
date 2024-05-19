@@ -1,6 +1,6 @@
 package com.example.springboot.config.security;
 
-import com.example.springboot.modules.user.UserDetailService;
+import com.example.springboot.modules.user.UserDetailServiceCore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ public class SecurityConfig {
     private JwtRequestFilter jwtRequestFilter;
 
     @Autowired
-    private UserDetailService userService;
+    private UserDetailServiceCore userService;
 
     @Autowired
     private CustomAccessDeniedHandler customAccessDeniedHandler;

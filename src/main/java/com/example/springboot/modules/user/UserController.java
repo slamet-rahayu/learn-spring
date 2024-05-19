@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Validated
-@RequestMapping(value = "/user", consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/user")
 public class UserController {
 
     @PersistenceContext
@@ -32,7 +32,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/register")
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiResponse> register(@Valid @RequestBody UserEntity user) {
         userService.register(user);
         ApiResponse apiResponse = new ApiResponse();

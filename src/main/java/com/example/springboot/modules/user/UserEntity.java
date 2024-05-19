@@ -2,6 +2,7 @@ package com.example.springboot.modules.user;
 
 
 import com.example.springboot.annotations.Unique;
+import com.example.springboot.modules.userDetail.UserDetailEntity;
 import com.example.springboot.validation.UniqueConstraintValidator;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -31,6 +32,10 @@ public class UserEntity {
     @NotBlank
     @Column(name = "role", nullable = false)
     private String role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", referencedColumnName = "user_id_user")
+    private UserDetailEntity userDetail;
 
     // Constructors
 //    public UserEntity(String username, String password, String name, String role) {
