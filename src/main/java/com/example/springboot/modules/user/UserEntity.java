@@ -33,8 +33,8 @@ public class UserEntity {
     @Column(name = "role", nullable = false)
     private String role;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id", referencedColumnName = "user_id_user")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "user_detail_user", referencedColumnName = "id")
     private UserDetailEntity userDetail;
 
     // Constructors
@@ -84,5 +84,13 @@ public class UserEntity {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public UserDetailEntity getUserDetail() {
+        return userDetail;
+    }
+
+    public void setUserDetail(UserDetailEntity userDetail) {
+        this.userDetail = userDetail;
     }
 }
